@@ -1,0 +1,16 @@
+pipeline {
+  agent any
+  
+  stages{
+      
+      stage("Build Docker Image") {
+        steps{
+            script {
+              dockerapp = docker.build("marsdeimos/kube-news:v2", '-f ./src/Dockerfile ./src')
+            }
+        }
+      }
+
+  }
+
+}
