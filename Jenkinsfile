@@ -23,9 +23,9 @@ pipeline {
       }
 
       stage('Deploy At Kubernetes'){
-
         steps{
             withKubeConfig([credentialsId: 'kubeconfig']){
+              sh 'kubectl config use-context do-nyc3-k8s'
               sh 'kubectl apply -f ./k8s/deployment.yaml'
             }
         }
